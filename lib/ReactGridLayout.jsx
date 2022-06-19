@@ -362,14 +362,14 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       oldLayout: null
     });
 
-    this.onLayoutMaybeChanged(newLayout, oldLayout);
+    this.onLayoutMaybeChanged(newLayout, oldLayout, true);
   };
 
-  onLayoutMaybeChanged(newLayout: Layout, oldLayout: ?Layout) {
+  onLayoutMaybeChanged(newLayout: Layout, oldLayout: ?Layout, hasPosSizeChanged: boolean) {
     if (!oldLayout) oldLayout = this.state.layout;
 
     if (!isEqual(oldLayout, newLayout)) {
-      this.props.onLayoutChange(newLayout);
+      this.props.onLayoutChange(newLayout, hasPosSizeChanged);
     }
   }
 
@@ -482,7 +482,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       oldLayout: null
     });
 
-    this.onLayoutMaybeChanged(newLayout, oldLayout);
+    this.onLayoutMaybeChanged(newLayout, oldLayout, true);
   };
 
   /**
